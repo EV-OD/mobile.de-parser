@@ -5,7 +5,7 @@ async function getAllSearchespage(page, limit=10){
     let searches = []
     let query = `[id^='${pageDetail.searchInfoPage.searchItemParentSelector.start}'][id$='${pageDetail.searchInfoPage.searchItemParentSelector.end}']`
     console.log(query)
-    await page.waitForSelector(query).
+    await page.waitForSelector(query)
     const pElt = (await page.$$(query))[0];
     const searchInfoPage = await pElt.$$(pageDetail.searchInfoPage.searchItemParentSelector.extra);
 
