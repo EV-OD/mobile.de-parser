@@ -67,13 +67,10 @@ async function login(page, email, password) {
     // Hover over the submit button before clicking
     await page.hover(loginParserDetail.submitSelector);
     await sleep(Math.random() * 500 + 500); // Pause before clicking
-    let stoplogging = startLogging(page)
     await page.locator(loginParserDetail.submitSelector).click();
 
     // Wait for navigation
     await page.waitForNavigation();
-
-    stoplogging()
 
     console.log('Logged in');
 }

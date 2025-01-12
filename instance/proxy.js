@@ -1,4 +1,6 @@
 const { default: axios } = require("axios");
+require('dotenv').config();
+
 
 async function getFreeProxy() {
     const response = await fetch('https://proxylist.geonode.com/api/proxy-list?limit=500&page=1&sort_by=lastChecked&sort_type=desc');
@@ -15,7 +17,7 @@ async function getFreeProxy() {
 }
 
 async function getProxy(proxyIndex) {
-    const webshareToken = 'pnqhjdvds2n2unee48lt580n2l799ykyjahzeyax';
+    const webshareToken = process.env.PROXY_API_KEY;
     const webshareAPI = "https://proxy.webshare.io/api/v2/proxy/list/?mode=direct&page=1&page_size=25";
     const apiResponse = await axios.get(webshareAPI, {
         headers: {
