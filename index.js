@@ -21,7 +21,10 @@ async function main() {
     await login(page, process.env.USER1_EMAIL, process.env.USER1_PASSWORD);
     console.log('Logged in state')
     await navigateToSearchInfoFromHome(page);
-    let seachLinks = await getAllSearchespage(page);
+    let seachLinks = await getAllSearchespage(page, 3);
+    for (const link of seachLinks) {
+        
+    }
 }
 
 

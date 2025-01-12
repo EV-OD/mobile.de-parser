@@ -50,7 +50,8 @@ const pageDetail = {
                         parent:"#section-techData > section > div > div:nth-child(1) > div > ul ",
                         checkbox(i){
                             return `#section-techData > section > div > div:nth-child(1) > div > ul > li:nth-child(${i}) > div > label > input`
-                        }
+                        },
+                        checkboxSelectorRelative:"div > label > input"
                     },
                     //Material der Innenausstattung
 
