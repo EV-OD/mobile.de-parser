@@ -1,18 +1,23 @@
 const { pageDetail } = require("../constants")
 const { getSelectData, getInputData, getAllCheckedIndexes } = require("../utils/inputs")
 
-function getAllSearchespage(page, limit=10){
+async function getAllSearchespage(page, limit=10){
     let searches = []
-    let searchQuery = pageDetail.searchInfoPage.searchItemParentSelector + "> *"
-    let searchInfoPage = page.$$(searchQuery)
+    let query = `[id^='${pageDetail.searchInfoPage.searchItemParentSelector.start}'][id$='${pageDetail.searchInfoPage.searchItemParentSelector.end}']`
+    console.log(query)
+    await page.waitForSelector(query).
+    const pElt = (await page.$$(query))[0];
+    const searchInfoPage = await pElt.$$(pageDetail.searchInfoPage.searchItemParentSelector.extra);
 
-    for (let i = 0; i < searchInfoPage.length && searches.length < limit; i++) {
-        let search = searchInfoPage[i]
-        let anchor = search.$(pageDetail.searchInfoPage.searchLinkRelative)
-        anchor = anchor.getAttribute("href")
-        searches.push(anchor)
-    }
-    return searches
+    console.log(searchInfoPage)
+
+    // for (let i = 0; i < searchInfoPage.length && searches.length < limit; i++) {
+    //     let search = searchInfoPage[i]
+    //     let anchor = search.$(pageDetail.searchInfoPage.searchLinkRelative)
+    //     anchor = anchor.getAttribute("href")
+    //     searches.push(anchor)
+    // }
+    // return searches
 }
 
 async function pageInfo(page){

@@ -1,4 +1,5 @@
 const pageDetail = {
+    userDataDir:"./data",
     url: "https://www.mobile.de/?lang=en",
     login:{
         url:"https://www.mobile.de/api/auth/login?cf_template=OTP&source_uri=https%3A%2F%2Fwww.mobile.de%2F",
@@ -11,7 +12,12 @@ const pageDetail = {
     searchInfoPage: {
         url: "https://suchen.mobile.de/goto/fahrzeuge/mymobile/searchOverview.html",
         selector:"#root > header > div.q2OrQ > div.VwijT > div > div.dmhtY > span:nth-child(2) > span",
-        searchItemParentSelector: "#saved-searches-tab_72572_panel > div > section > div",
+        // searchItemParentSelector: "#saved-searches-tab_72572_panel > div > section > div",
+        searchItemParentSelector:{
+            start:"saved-searches-tab_",
+            end:"_panel",
+            extra:"div > section > div > *"
+        },
         searchLinkRelative:"div.OSgOk > div > a.ueuGs.FWtU1.CCaE2.vfGGm",
         seachEditLink(i){
             return `#saved-searches-tab_45073_panel > div > section > div > div:nth-child(${i}) > ${this.searchLinkRelative}`;
@@ -59,7 +65,8 @@ const pageDetail = {
                         parent:"#section-interiorFeatures > section > div > div:nth-child(2) > div > ul",
                         checkbox(i){
                             return `#section-interiorFeatures > section > div > div:nth-child(2) > div > ul > li:nth-child(${i}) > div > div > label > input`
-                        }
+                        },
+                        checkboxSelectorRelative:"div > div > label > input"
                     }
 
                 }

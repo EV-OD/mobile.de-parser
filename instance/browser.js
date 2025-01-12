@@ -11,6 +11,7 @@ const { sleep } = require('../utils/sleep');
 // const { default: puppeteer } = require('puppeteer');
 const { randomRange } = require('../utils/helpers');
 const { getProxy } = require('./proxy');
+const { pageDetail } = require('../constants');
 
 async function createBrowser(proxy = null) {
 
@@ -40,6 +41,7 @@ async function createBrowser(proxy = null) {
     executablePath: "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe",
     // executablePath: "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
     defaultViewport: null,
+    userDataDir: pageDetail.userDataDir
   });
 
   return { browser, proxyData };
