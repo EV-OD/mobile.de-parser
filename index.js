@@ -20,11 +20,11 @@ async function main() {
     // console.log(proxyData);
     await page.setUserAgent(newUserAgent);
     // if(!isUserDataPresent){
-        await login(page, process.env.USER1_EMAIL, process.env.USER1_PASSWORD);
-        console.log('Logged in state')
-        await navigateToSearchInfoFromHome(page);
+        // await login(page, process.env.USER1_EMAIL, process.env.USER1_PASSWORD);
+        // console.log('Logged in state')
+        // await navigateToSearchInfoFromHome(page);
     // }else{
-    //     page.goto('https://suchen.mobile.de/fahrzeuge/mymobile/searchOverview.html')
+        page.goto('https://suchen.mobile.de/fahrzeuge/mymobile/searchOverview.html')
     // }
     let seachLinks = await getAllSearchespage(page, 3);
     console.log(seachLinks);

@@ -1,6 +1,7 @@
 const pageDetail = {
     userDataDir:"./data",
     url: "https://www.mobile.de/?lang=en",
+    seachUrl:"https://suchen.mobile.de",
     login:{
         url:"https://www.mobile.de/api/auth/login?cf_template=OTP&source_uri=https%3A%2F%2Fwww.mobile.de%2F",
         // url:"https://whatismyipaddress.com/",

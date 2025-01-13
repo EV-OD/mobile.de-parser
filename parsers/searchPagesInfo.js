@@ -2,22 +2,32 @@ const { pageDetail } = require("../constants")
 const { getSelectData, getInputData, getAllCheckedIndexes } = require("../utils/inputs")
 
 async function getAllSearchespage(page, limit=10){
-    let searches = []
-    let query = `[id^='${pageDetail.searchInfoPage.searchItemParentSelector.start}'][id$='${pageDetail.searchInfoPage.searchItemParentSelector.end}']`
-    console.log(query)
-    await page.waitForSelector(query)
-    const pElt = (await page.$$(query))[0];
-    const searchInfoPage = await pElt.$$(pageDetail.searchInfoPage.searchItemParentSelector.extra);
+    let searches = [];
+    let query = `[id^='${pageDetail.searchInfoPage.searchItemParentSelector.start}'][id$='${pageDetail.searchInfoPage.searchItemParentSelector.end}']`;
+    console.log("Query:", query);
+    
+    try {
+      // Wait for the selector to appear
+      await page.waitForSelector(query, { visible: true });
+      console.log("Selector is visible.");
+    
+      // Use $eval and ensure the querySelectorAll result is converted to an array
+      const p = await page.$eval(query, (el) => {
+        let aEltList = [...el.querySelectorAll("div > section > div > * > div.OSgOk > div > a.ueuGs.FWtU1.CCaE2.vfGGm")]
+        let a = aEltList.map((a) => a.getAttribute("href"))
+        return a
+      });
 
-    console.log(searchInfoPage)
+      for (let i = 0; i < p.length && searches.length < limit; i++) {
+        let search = p[i]
+        searches.push(search)
+    }
+    return searches
+    
+    } catch (error) {
+      console.error("Error occurred:", error.message);
+    }
 
-    // for (let i = 0; i < searchInfoPage.length && searches.length < limit; i++) {
-    //     let search = searchInfoPage[i]
-    //     let anchor = search.$(pageDetail.searchInfoPage.searchLinkRelative)
-    //     anchor = anchor.getAttribute("href")
-    //     searches.push(anchor)
-    // }
-    // return searches
 }
 
 async function pageInfo(page){
