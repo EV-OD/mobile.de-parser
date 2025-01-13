@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Audi RS3, bis 53.000 €, Erstzulassung von 01/2022…",
+    "basicData": {
+      "marke": "Audi",
+      "modell": "RS3",
+      "extraInput": "",
+      "price": {
+        "from": "",
+        "until": "53.000 €"
+      },
+      "initialRegistration": {
+        "from": "2022",
+        "until": ""
+      },
+      "mileage": {
+        "from": "",
+        "until": "37.000 km"
+      },
+      "fuelType": [],
+      "interiorMaterial": [
+        0,
+        1,
+        5
+      ]
+    }
+  },
+  {
+    "name": "Jeep Compass, bis 21.000 €, Erstzulassung von 01/…",
+    "basicData": {
+      "marke": "Jeep",
+      "modell": "Compass",
+      "extraInput": "",
+      "price": {
+        "from": "",
+        "until": "21.000 €"
+      },
+      "initialRegistration": {
+        "from": "2022",
+        "until": ""
+      },
+      "mileage": {
+        "from": "",
+        "until": "37.000 km"
+      },
+      "fuelType": [],
+      "interiorMaterial": []
+    }
+  },
+  {
+    "name": "Renault Espace, bis 35.000 €, Erstzulassung von 0…",
+    "basicData": {
+      "marke": "Renault",
+      "modell": "Espace",
+      "extraInput": "",
+      "price": {
+        "from": "",
+        "until": "35.000 €"
+      },
+      "initialRegistration": {
+        "from": "2024",
+        "until": ""
+      },
+      "mileage": {
+        "from": "",
+        "until": "37.000 km"
+      },
+      "fuelType": [],
+      "interiorMaterial": []
+    }
+  }
+]
