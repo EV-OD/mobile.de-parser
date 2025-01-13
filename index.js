@@ -27,12 +27,15 @@ async function main() {
         page.goto('https://suchen.mobile.de/fahrzeuge/mymobile/searchOverview.html')
     // }
     let seachLinks = await getAllSearchespage(page, 3);
-    console.log(seachLinks);
-    // for (const link of seachLinks) {
-    //     await navigateToEachSearchFilter(page, link);
-    //     let data = await pageInfo(page);
-    //     console.log(data);
-    // }
+    for (const link of seachLinks) {
+        console.log('Navigating to:', link);
+        await navigateToEachSearchFilter(page, link);
+        console.log('Navigated to:', link);
+        let data = await pageInfo(page);
+        console.log(data);
+    }
+
+    await browser.close();
 }
 
 

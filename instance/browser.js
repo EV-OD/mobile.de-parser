@@ -12,6 +12,7 @@ const { sleep } = require('../utils/sleep');
 const { randomRange } = require('../utils/helpers');
 const { getProxy } = require('./proxy');
 const { pageDetail } = require('../constants');
+const { timeout } = require('puppeteer');
 
 async function createBrowser(proxy = null) {
 
@@ -36,12 +37,12 @@ async function createBrowser(proxy = null) {
   }
 
   const browser = await pup.launch({
-    headless: false, // Set to false for debugging
+    headless: true, // Set to false for debugging
     args: args,
     executablePath: "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe",
     // executablePath: "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
     defaultViewport: null,
-    userDataDir: pageDetail.userDataDir
+    userDataDir: pageDetail.userDataDir,
   });
 
   return { browser, proxyData };
@@ -62,6 +63,7 @@ async function setupBrowserAndPage(proxy = null) {
     'Accept-Language': 'en-US,en;q=0.9',
   });
   await page.emulateTimezone('Europe/Berlin');
+  page.setDefaultTimeout(0)
   return { browser, page, proxyData };
 }
 

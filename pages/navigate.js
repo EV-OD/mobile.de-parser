@@ -1,3 +1,4 @@
+const { timeout } = require("puppeteer");
 const { pageDetail } = require("../constants");
 
 async function navigateToSearchInfoFromHome(page){
@@ -10,9 +11,9 @@ async function navigateToSearchInfoFromHome(page){
 }
 
 async function navigateToEachSearchFilter(page, url) {
-    await page.goto(url)
-    await page.waitForSelector(pageDetail.searchInfoPage.eachPage.selector.name)
-    await console.log('done')
+    await page.goto(url,{timeout: 0})
+    await page.waitForSelector(pageDetail.searchInfoPage.eachPage.selector.name, {timeout: 0})
+    console.log('done')
 }
 
 async function goBack(page){
